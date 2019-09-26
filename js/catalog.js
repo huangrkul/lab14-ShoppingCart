@@ -64,10 +64,16 @@ function updateCartPreview() {
   // TODO: Add a new element to the cartContents div with that information
   var cartItem = localStorage.getItem('order');
   var cartItemParsed = JSON.parse(cartItem);
-  var preview = document.getElementById('copy');
+  var preview = document.getElementById('cartContents');
+  var newUL = document.createElement('ul');
+  //fix me because it's adding additional instances of li
   for (var i=0; i < cartItemParsed.length; i++) {
     new CartItem(cartItemParsed[i].product, cartItemParsed[i].quantity);
+    var newLI = document.createElement('li');
+    newLI.textContent = cartItemParsed[i].product + ': ' + cartItemParsed[i].quantity;
+    newUL.appendChild(newLI);
   }
+  preview.appendChild(newUL);
 }
 
 // Set up the "submit" event listener on the form.
