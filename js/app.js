@@ -1,5 +1,8 @@
 'use strict';
 
+var catalog = document.getElementById('catalog');
+var items = document.getElementById('items');
+
 // Cart constructor.
 var Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -53,6 +56,16 @@ function generateCatalog() {
   new Product('assets/usb.gif', 'USB');
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
+  createList();
+}
+
+function createList() {
+  for(var i=0; i < Product.allProducts.length; i++){
+    var opEl = document.createElement('option');
+    opEl.value = Product.allProducts[i].name;
+    opEl.textContent = Product.allProducts[i].name;
+    items.appendChild(opEl);
+  }
 }
 
 // Initialize the app by creating the big list of products with images and names
