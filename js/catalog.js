@@ -62,7 +62,7 @@ function updateCounter() {
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
-  var cartItem = localStorage.getItem('order');
+  var cartItem = localStorage.getItem('cart');
   var cartItemParsed = JSON.parse(cartItem);
   var preview = document.getElementById('cartContents');
   var newUL = document.createElement('ul');
