@@ -57,6 +57,7 @@ function generateCatalog() {
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
   createList();
+  catalog.addEventListener('submit', handleSubmit);
 }
 
 function createList() {
@@ -67,6 +68,15 @@ function createList() {
     items.appendChild(opEl);
   }
 }
+
+function handleSubmit(event){
+  event.preventDefault();
+  var keyName = event.target.items.value;
+  var keyValue = event.target.quantity.value;
+  localStorage.setItem(keyName, keyValue);
+}
+
+
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
