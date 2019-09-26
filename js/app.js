@@ -73,7 +73,7 @@ function handleSubmit(event){
   event.preventDefault();
   var keyName = event.target.items.value;
   var keyValue = event.target.quantity.value;
-  localStorage.setItem(keyName, keyValue);
+  localStorage.setItem(keyName, keyValue)
 }
 
 
