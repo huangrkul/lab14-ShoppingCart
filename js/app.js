@@ -1,8 +1,5 @@
 'use strict';
 
-var catalog = document.getElementById('catalog');
-var items = document.getElementById('items');
-
 // Cart constructor.
 var Cart = function(items) {
   // this.items is an array of CartItem instances.
@@ -11,6 +8,8 @@ var Cart = function(items) {
 
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  var newItem = new CartItem (product, quantity);
+  this.items.push(newItem);
 };
 
 Cart.prototype.saveToLocalStorage = function() {
@@ -56,27 +55,7 @@ function generateCatalog() {
   new Product('assets/usb.gif', 'USB');
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
-  createList();
-  catalog.addEventListener('submit', handleSubmit);
 }
-
-function createList() {
-  for(var i=0; i < Product.allProducts.length; i++){
-    var opEl = document.createElement('option');
-    opEl.value = Product.allProducts[i].name;
-    opEl.textContent = Product.allProducts[i].name;
-    items.appendChild(opEl);
-  }
-}
-
-function handleSubmit(event){
-  event.preventDefault();
-  var keyName = event.target.items.value;
-  var keyValue = event.target.quantity.value;
-  localStorage.setItem(keyName, keyValue)
-}
-
-
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
