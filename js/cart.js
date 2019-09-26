@@ -35,7 +35,7 @@ function showCart() {
     var tR = document.createElement('tr');
     var tD1 = document.createElement('td');
     tD1.textContent = "delete";
-    tD1.addEventListener('click', removeItemFRomCart);
+    tD1.addEventListener('click', removeItemFromCart);
     var tD2 = document.createElement('td');
     tD2.textContent = cart[i].quantity;
     console.log(cart[i].quantity);
