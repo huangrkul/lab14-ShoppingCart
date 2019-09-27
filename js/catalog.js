@@ -51,10 +51,9 @@ function addSelectedItemToCart() {
 // TODO: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
   var addCounter = document.getElementById('itemCount');
-  var countNum;
+  var countNum = 0;
   for(var i = 0; i < cart.items.length; i++){
     countNum += cart.items[i].quantity;
-    console.log(cart.items[i]);
   }
   addCounter.textContent = countNum;
 
@@ -63,6 +62,18 @@ function updateCounter() {
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
   // TODO: Add a new element to the cartContents div with that information
+  var cartItem = localStorage.getItem('cart');
+  var cartItemParsed = JSON.parse(cartItem);
+  var preview = document.getElementById('cartContents');
+  var newUL = document.createElement('ul');
+  //fix me because it's adding additional instances of li
+  for (var i=0; i < cartItemParsed.length; i++) {
+    new CartItem(cartItemParsed[i].product, cartItemParsed[i].quantity);
+    var newLI = document.createElement('li');
+    newLI.textContent = cartItemParsed[i].product + ': ' + cartItemParsed[i].quantity;
+    newUL.appendChild(newLI);
+  }
+  preview.appendChild(newUL);
 }
 
 // Set up the "submit" event listener on the form.
